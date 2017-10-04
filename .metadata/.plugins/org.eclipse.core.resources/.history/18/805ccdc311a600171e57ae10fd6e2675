@@ -1,0 +1,20 @@
+package generation;
+
+public class MazeBuilderEller extends MazeBuilder implements Runnable {
+	
+	public MazeBuilderEller() {
+		super();
+		System.out.println("MazeBuilderPrim uses Eller's algorithm to generate maze.");
+	} 
+	
+	public MazeBuilderEller(boolean det) {
+		super(det);
+		System.out.println("MazeBuilderPrim uses Eller's algorithm to generate maze.");
+	}
+	
+	
+	@Override
+	protected void generatePathways() {
+		
+	}
+}

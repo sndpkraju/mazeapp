@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="AllCellsTests" project="Maze" tests="20" started="20" failures="0" errors="0" ignored="0">
+  <testsuite name="generation.AllCellsTests" time="0.002">
+    <testsuite name="generation.CellsTest" time="0.001">
+      <testcase name="testExitPosition" classname="generation.CellsTest" time="0.001"/>
+      <testcase name="testHasMaskedBitsTrue" classname="generation.CellsTest" time="0.0"/>
+      <testcase name="testCanGo" classname="generation.CellsTest" time="0.0"/>
+      <testcase name="testCells" classname="generation.CellsTest" time="0.0"/>
+      <testcase name="testCellsConstructorWithArray" classname="generation.CellsTest" time="0.0"/>
+      <testcase name="testToString" classname="generation.CellsTest" time="0.0"/>
+      <testcase name="testSetCellAsVisitedToZero" classname="generation.CellsTest" time="0.0"/>
+      <testcase name="testInitialize" classname="generation.CellsTest" time="0.0"/>
+      <testcase name="testIsInRoom" classname="generation.CellsTest" time="0.0"/>
+      <testcase name="testHasWall" classname="generation.CellsTest" time="0.0"/>
+      <testcase name="testHasMaskedBitsFalse" classname="generation.CellsTest" time="0.0"/>
+      <testcase name="testGetCWConstantForDirection" classname="generation.CellsTest" time="0.0"/>
+      <testcase name="testCellsBothConstructors" classname="generation.CellsTest" time="0.0"/>
+      <testcase name="testSetInRoomToOne" classname="generation.CellsTest" time="0.0"/>
+      <testcase name="testAreaOverlapsWithRoom" classname="generation.CellsTest" time="0.0"/>
+      <testcase name="testMarkAreaAsRoom" classname="generation.CellsTest" time="0.0"/>
+      <testcase name="testAddAndDeleteWall" classname="generation.CellsTest" time="0.0"/>
+    </testsuite>
+    <testsuite name="generation.CellsTestIterator" time="0.001">
+      <testcase name="testIteratorEmptyCells" classname="generation.CellsTestIterator" time="0.001"/>
+      <testcase name="testIteratorCellsAllSequencesSameVertical" classname="generation.CellsTestIterator" time="0.0"/>
+      <testcase name="testIteratorCellsAllWallsUp" classname="generation.CellsTestIterator" time="0.0"/>
+    </testsuite>
+  </testsuite>
+</testrun>

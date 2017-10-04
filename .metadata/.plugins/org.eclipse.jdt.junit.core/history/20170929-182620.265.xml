@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="MazeFactoryTest" project="Maze" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="generation.MazeFactoryTest" time="1.044">
+    <testcase name="testSolutionExistsFromAllCells" classname="generation.MazeFactoryTest" time="0.715"/>
+    <testcase name="assertBuildSuccess" classname="generation.MazeFactoryTest" time="0.328"/>
+  </testsuite>
+</testrun>

@@ -1,0 +1,30 @@
+package generation;
+
+import static org.junit.Assert.*;
+import org.junit.*;
+
+import org.junit.Test;
+
+import falstad.MazeController;
+import falstad.MazeController.UserInput;
+
+public class MazeBuilderEllerTest {
+	private MazeController control;
+	
+	@Before
+	public void setUp(){
+		control = new MazeController(Order.Builder.Eller);
+		control.init();
+		MazeFactory factory = new MazeFactory();
+		factory.order(control);
+		factory.waitTillDelivered();
+		
+	}
+	
+	
+	
+	
+	
+	
+}
+

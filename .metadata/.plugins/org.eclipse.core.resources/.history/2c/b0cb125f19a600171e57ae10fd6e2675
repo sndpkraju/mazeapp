@@ -1,0 +1,101 @@
+package generation;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+
+public class MazeBuilderEller extends MazeBuilder implements Runnable {
+	
+	public MazeBuilderEller() {
+		super();
+		System.out.println("MazeBuilderPrim uses Eller's algorithm to generate maze.");
+	} 
+	
+	public MazeBuilderEller(boolean det) {
+		super(det);
+		System.out.println("MazeBuilderPrim uses Eller's algorithm to generate maze.");
+	}
+	
+	private int[] sets, nextSets;
+	private HashSet<Integer> uniqueSets;
+	private int setID = 1;
+	
+	
+	@Override
+	protected void generatePathways() {
+		sets = new int[width];
+		
+		
+		for (int i = 0; i<width; i++) {
+			sets[i] = setID;
+			setID++;
+		}
+		
+		for(int row = 0; row < height -  1; row++) {
+			System.out.println("row");
+			nextSets = new int[width];
+			
+			for(int col = 0; col < width-1; col++) {
+				boolean knockDownWall = random.nextIntWithinInterval(0,1) == 1;
+				if(knockDownWall && sets[col] != sets[col+1]) {
+					mergeCellsHorizontal(row, col);
+				}
+			
+			}
+			
+			uniqueSets = new HashSet<Integer>();
+			for(int set: sets) {
+				if(!uniqueSets.contains(set)) {
+					uniqueSets.add(set);
+				}
+			}
+			
+			ArrayList<Integer> indeces;
+			int indexOfCellToCopy;
+			
+			for(int set: uniqueSets) {
+				indeces = new ArrayList<Integer>();
+				for(int x = 0; x< width; x++) {
+					if(sets[x] == set) {
+						indeces.add(x);
+					}
+				}
+				indexOfCellToCopy = indeces.get(random.nextIntWithinInterval(0, indeces.size()-1));
+			
+				mergeCellsVertical(row, indexOfCellToCopy);
+			}
+			
+			populateNewRow();
+		}
+		for(int col = 0; col < width-1; col++) {
+			if(sets[col] != sets[col+1]) {
+				mergeCellsHorizontal(height-1, col);
+			}
+		}
+	}
+	
+	private void mergeCellsHorizontal(int row, int col) {
+		Wall wall = new Wall(col, row, CardinalDirection.East);
+		cells.deleteWall(wall);
+		sets[col+1] = sets[col];
+		
+	}
+	
+	private void mergeCellsVertical(int row, int col) {
+		Wall wall = new Wall(col, row, CardinalDirection.South);
+		cells.deleteWall(wall);
+		nextSets[col]= sets[col];
+	}
+	
+	private void populateNewRow(int[] nextRow) {
+		for (int i = 0; i<width; i++) {
+			if(nextRow[i] != 0) {
+				sets[i] = nextRow[i];
+			}
+			else {
+				
+				
+			}
+		}
+	}
+	
+}

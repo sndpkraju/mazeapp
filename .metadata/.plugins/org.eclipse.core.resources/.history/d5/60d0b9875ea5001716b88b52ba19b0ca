@@ -1,0 +1,40 @@
+package generation;
+
+import static org.junit.Assert.*;
+import org.junit.*;
+
+import org.junit.Test;
+
+import falstad.MazeController;
+
+public class MazeFactoryTest {
+	private MazeController control;
+	
+	@Before
+	public void setUp(){
+		control = new MazeController();
+		control.init();
+		MazeFactory factory = new MazeFactory();
+		factory.order(control);
+		factory.waitTillDelivered();
+		
+	}
+	
+	
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+	
+	@Test
+	public void assertBuildSuccess() {
+		assertNotNull(control.getBuilder());
+		System.out.println("This is a success");
+	}
+	
+	@Test
+	public void testSolutionExistsFromAllCells() {
+		
+	}
+
+}

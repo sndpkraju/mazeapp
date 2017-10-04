@@ -1,0 +1,10 @@
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=macosx
+configDescList=org.eclipse.launchbar.core.descriptorType.default\:MazeApplication(Prim),org.eclipse.launchbar.core.descriptorType.default\:MazeApplication (file),org.eclipse.launchbar.core.descriptorType.default\:MazeApplication,org.eclipse.launchbar.core.descriptorType.default\:MazeFactoryTest,org.eclipse.launchbar.core.descriptorType.default\:AllCellsTests,org.eclipse.launchbar.core.descriptorType.default\:MazeEllerTest,org.eclipse.launchbar.core.descriptorType.default\:MazeBuilderEllerTest,org.eclipse.launchbar.core.descriptorType.default\:MazeApplication (Eller)
+eclipse.preferences.version=1
+org.eclipse.launchbar.core.descriptorType.default\:AllCellsTests/activeLaunchMode=run
+org.eclipse.launchbar.core.descriptorType.default\:MazeApplication\ (Eller)/activeLaunchMode=run
+org.eclipse.launchbar.core.descriptorType.default\:MazeApplication\ (Eller)/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
+org.eclipse.launchbar.core.descriptorType.default\:MazeApplication/activeLaunchMode=run
+org.eclipse.launchbar.core.descriptorType.default\:MazeApplication/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
+org.eclipse.launchbar.core.descriptorType.default\:MazeBuilderEllerTest/activeLaunchMode=coverage

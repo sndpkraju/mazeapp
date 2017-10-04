@@ -1,0 +1,105 @@
+package generation;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+
+public class MazeBuilderEller extends MazeBuilder implements Runnable {
+	
+	public MazeBuilderEller() {
+		super();
+		System.out.println("MazeBuilderPrim uses Eller's algorithm to generate maze.");
+	} 
+	//deterministic maze
+	public MazeBuilderEller(boolean det) {
+		super(det);
+		System.out.println("MazeBuilder uses Eller's algorithm to generate maze.");
+	}
+	
+	private int[] sets, nextSet;
+	private HashSet<Integer> diffSets;
+	private int setNum = 1;
+	
+	//main algorithm for generating maze with eller's algorithm
+	// uses three helper methods: mergeCellsHorizontal, mergeCellsVertical, and populateNewRow
+	@Override
+	protected void generatePathways() {
+		sets = new int[width];
+		
+		
+		for (int i = 0; i<width; i++) {
+			sets[i] = setNum;
+			setNum++;
+		}
+		
+		for(int row = 0; row < height -  1; row++) {
+			System.out.println("row");
+			nextSet = new int[width];
+			
+			for(int col = 0; col < width-1; col++) {
+				boolean knockDownWall = random.nextIntWithinInterval(0,1) == 1;
+				if(knockDownWall && sets[col] != sets[col+1]) {
+					mergeCellsHorizontal(row, col);
+				}
+			
+			}
+			
+			diffSets = new HashSet<Integer>();
+			for(int set: sets) {
+				if(!diffSets.contains(set)) {
+					diffSets.add(set);
+				}
+			}
+			
+			ArrayList<Integer> indeces;
+			int indexOfCellToCopy;
+			
+			for(int set: diffSets) {
+				indeces = new ArrayList<Integer>();
+				for(int x = 0; x< width; x++) {
+					if(sets[x] == set) {
+						indeces.add(x);
+					}
+				}
+				indexOfCellToCopy = indeces.get(random.nextIntWithinInterval(0, indeces.size()-1));
+			
+				mergeCellsVertical(row, indexOfCellToCopy);
+			}
+			
+			populateNewRow();
+		}
+		//last row
+		for(int col = 0; col < width-1; col++) {
+			if(sets[col] != sets[col+1]) {
+				mergeCellsHorizontal(height-1, col);
+			}
+		}
+	}
+	//uses the deletewall method from cells and creates a wall object to merge together cells next to each other
+	private void mergeCellsHorizontal(int row, int col) {
+		Wall wall = new Wall(col, row, CardinalDirection.East);
+		cells.deleteWall(wall);
+		sets[col+1] = sets[col];
+		
+	}
+	//uses the delete wall method from cells and creates a wall object to merge cells below the current one.
+	private void mergeCellsVertical(int row, int col) {
+		Wall wall = new Wall(col, row, CardinalDirection.South);
+		cells.deleteWall(wall);
+		nextSet[col]= sets[col];
+	}
+	
+	private void populateNewRow() {
+		for (int i = 0; i<width; i++) {
+			if(nextSet[i] != 0) {
+				sets[i] = nextSet[i];
+			}
+			else {
+				sets[i] = setNum;
+				setNum++;
+				
+				
+			}
+		}
+	}
+	
+}
